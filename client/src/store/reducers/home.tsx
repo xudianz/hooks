@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-interface HomeState {
+export interface HomeState {
 
 }
 const initialState: HomeState = {}

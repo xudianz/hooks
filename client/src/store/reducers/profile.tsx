@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-interface ProfileState {
+export interface ProfileState {
 
 }
 const initialState: ProfileState = {}
