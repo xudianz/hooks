@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack"
   },
@@ -40,6 +40,8 @@
     "html-webpack-plugin": "^4.3.0",
     "less": "^3.11.3",
     "less-loader": "^6.1.1",
+    "lib-flexible": "^0.3.2",
+    "px2rem-loader": "^0.1.9",
     "source-map-loader": "^1.0.0",
     "style-loader": "^1.2.1",
     "ts-loader": "^7.0.5",

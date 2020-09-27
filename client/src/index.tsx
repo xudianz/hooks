@@ -12,6 +12,7 @@ import Mine from './routes/Mine'
 import Profile from './routes/Profile'
 import { ConnectedRouter } from 'connected-react-router'
 import history from '@/history'
+import Tabs from '@/components/Tabs'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path="/profile" exact component={Profile} />
           </Switch>
         </main>
+        <Tabs />
       </ConfigProvider>
     </ConnectedRouter>
   </Provider>
