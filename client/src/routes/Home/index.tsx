@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import HomeHeader from './components/HomeHeader'
 import { RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -6,7 +6,7 @@ import { HomeState, CombinedState } from '@/type/state'
 import mapDispatchToProps from '@/store/actions/home'
 import './index.less'
 
-type Props = RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps
+type Props = PropsWithChildren<RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps>
 
 function Home(props: Props) {
   return (
