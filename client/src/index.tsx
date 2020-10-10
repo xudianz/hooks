@@ -21,8 +21,8 @@ ReactDOM.render(
         <main className="main-container">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/mine" exact component={Mine} />
-            <Route path="/profile" exact component={Profile} />
+            <Route path="/mine" component={Mine} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </main>
         <Tabs />
