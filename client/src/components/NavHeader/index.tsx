@@ -1,9 +1,11 @@
 import React, { PropsWithChildren } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { History } from 'history'
 import { LeftOutlined } from '@ant-design/icons'
 import './index.less'
 
-type Props = PropsWithChildren<RouteComponentProps>
+type Props = PropsWithChildren<{
+  history: History
+}>
 
 function Tabs(props: Props) {
   return (

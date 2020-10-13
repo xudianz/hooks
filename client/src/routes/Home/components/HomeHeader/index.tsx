@@ -1,18 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, CSSProperties } from 'react'
 import { BarsOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
 import { Transition } from 'react-transition-group'
+import Logo from '@/assets/img/timg.jpg'
 import './index.less'
 
-const Logo = require('@/assets/img/timg.jpg')
 const duration = 300
 
-const defaultStyle: React.CSSProperties = {
+const defaultStyle: CSSProperties = {
   transition: `all ${duration}ms ease-in-out`,
   opacity: 0
 }
 
-const transitionStyles = {
+interface TransitionStyles {
+  entering: CSSProperties,
+  entered: CSSProperties,
+  exiting: CSSProperties,
+  exited: CSSProperties,
+  unmounted: CSSProperties
+}
+
+const transitionStyles: TransitionStyles = {
   entering: { opacity: 1 },
   entered:  { opacity: 1 },
   exiting:  { opacity: 0 },
@@ -40,12 +48,12 @@ function HomeHeader(props: Props) {
   return (
     <header className="home-header">
       <div className="logo-header">
-        <img src={Logo.default} width="160" height="40" alt="logo"/>
+        <img src={Logo} width="160" height="40" alt="logo"/>
         <BarsOutlined onClick={() => setVisible(!visible)}/>
       </div>
       <Transition in={visible} timeout={duration}>
         {
-          state => (
+          (state: keyof TransitionStyles) => (
             <ul
               className="category"
               onClick={setCurrentCategory}
