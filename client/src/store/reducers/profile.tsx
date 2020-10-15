@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux'
 import { ProfileState, LOGIN_TYPES } from '@/type/state'
+import * as actionTypes from '@/store/action-types'
 
 const initialState: ProfileState = {
   loginState: LOGIN_TYPES.UN_VALIDATE,
@@ -8,5 +9,28 @@ const initialState: ProfileState = {
 }
 
 export default function (state: ProfileState = initialState, action: AnyAction): ProfileState {
-  return state
+  switch(action.type) {
+    case actionTypes.VALIDATE:
+      if (action.payload.success) {
+        return {
+          loginState: LOGIN_TYPES.LOGINED,
+          user: action.payload,
+          error: null
+        }
+      } else {
+        return {
+          loginState: LOGIN_TYPES.UN_LOGINED,
+          user: null,
+          error: action.payload
+        }
+      }
+    case actionTypes.LOGOUT:
+      return {
+        loginState: LOGIN_TYPES.UN_LOGINED,
+        user: null,
+        error: null
+      }
+    default: 
+      return state
+  }
 }
