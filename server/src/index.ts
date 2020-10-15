@@ -27,6 +27,8 @@ app.get('/', (_req, res, _next) => {
 });
 
 app.post('/user/register', userController.register)
+app.post('/user/login', userController.login)
+app.get('/user/validate', userController.validate)
 
 // 如果没有匹配到路由 创建一个自定义404错误对象 并传递给错误中间件
 app.use((_req: Request, _res: Response, next: NextFunction) => {
