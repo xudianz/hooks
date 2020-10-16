@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const tsImportPluginFactory = require('ts-import-plugin')
 const path = require('path')
 
 module.exports = {
@@ -29,7 +30,20 @@ module.exports = {
       {
         test: /\.(t|j)sx?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/
+        // exclude: /node_modules/,
+        options: {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [ tsImportPluginFactory({
+              libraryName: 'antd',
+              libraryDirectory: 'es',
+              style: 'css'
+            }) ]
+          }),
+          compilerOptions: {
+            module: 'es2015'
+          }
+        }
       },
       {
         test: /\.(t|j)sx?$/,
@@ -38,11 +52,44 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 8
+            }
+          }
+        ]
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,
+              remPrecision: 8
+            }
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
       },  
       {
         test: /\.(jpg|png|gif|svg|jpeg)$/,

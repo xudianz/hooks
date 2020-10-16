@@ -8,11 +8,12 @@
 <body>
   <script>
     (function() {
-      function refreshRem() {
-        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px' 
+      const docEle = document.documentElement
+      function setRemUnit() {
+        docEle.style.fontSize = docEle.clientWidth / 10 + 'px' 
       }
-      refreshRem()
-      window.addEventListener('resize', refreshRem, false)
+      setRemUnit()
+      window.addEventListener('resize', setRemUnit, false)
     })()
   </script>
   <div id="root"></div>
