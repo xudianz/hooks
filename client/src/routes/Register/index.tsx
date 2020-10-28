@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { Form, Input } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import './index.less'
 import { connect } from 'react-redux'
 import { CombinedState, ProfileState } from '@/type/state'
@@ -22,7 +22,21 @@ function Register(props: Props) {
         name="username"
         rules={[{ required: true, message: '用户名不能为空' }]}
       >
-        <Input placeholder="请输入用户名" prefix={UserOutlined} />
+        <Input placeholder="请输入用户名" prefix={<UserOutlined/>} />
+      </Form.Item>
+      <Form.Item
+        label="密码"
+        name="password"
+        rules={[{ required: true, message: '密码不能为空' }]}
+      >
+        <Input.Password placeholder="请输入密码" prefix={<LockOutlined/>} />
+      </Form.Item>
+      <Form.Item
+        label="确认密码"
+        name="password"
+        rules={[{ required: true, message: '确认密码不能为空' }]}
+      >
+        <Input.Password placeholder="再次输入密码" prefix={<LockOutlined/>} />
       </Form.Item>
     </Form>
   )
