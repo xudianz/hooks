@@ -23,7 +23,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     await user.save()
     res.json({
       success: true,
-      data: user,
+      data: user.toJSON(),
       message: '恭喜您，注册成功！'
     })
   } catch (error) {
