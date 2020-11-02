@@ -4,3 +4,8 @@ export interface RegisterValues {
   confirmPassword: string,
   email: string
 }
+
+export interface LoginValues {
+  username: string,
+  password: string,
+}

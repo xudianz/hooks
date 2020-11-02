@@ -14,7 +14,7 @@ export default function (state: ProfileState = initialState, action: AnyAction):
       if (action.payload.success) {
         return {
           loginState: LOGIN_TYPES.LOGINED,
-          user: action.payload,
+          user: action.payload.data,
           error: null
         }
       } else {
@@ -29,6 +29,14 @@ export default function (state: ProfileState = initialState, action: AnyAction):
         loginState: LOGIN_TYPES.UN_LOGINED,
         user: null,
         error: null
+      }
+    case actionTypes.SET_AVATAR:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          avatar: action.payload
+        }
       }
     default: 
       return state

@@ -61,7 +61,7 @@ export const validate = async (req: Request, res: Response, next: NextFunction) 
   }
   try {
     const userPaylod: UserPaylod = jwt.verify(token, process.env.JWT_SECRET_KEY || 'xudianz') as UserPaylod
-    let user: UserDocument|null = await User.findById(userPaylod.id)
+    let user: UserDocument | null = await User.findById(userPaylod.id)
     if (user) {
       res.json({
         success: true,
@@ -74,3 +74,19 @@ export const validate = async (req: Request, res: Response, next: NextFunction) 
     next(new HttpException(StatusCodes.UNAUTHORIZED, 'token不合法'))
   }
 }
+
+export const uploadAvatar = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { userId } = req.body
+    // avatar = http://localhost:8001/uploads/1604308972091.jpg
+    let avatar = `${req.protocol}://${req.headers.host}/uploads/${req.file.filename}`
+    await User.updateOne({ _id: userId }, { avatar })
+    res.json({
+      success: true,
+      data: avatar
+    })
+  } catch (error) {
+    next(new HttpException(StatusCodes.UNAUTHORIZED, '上传失败'))
+  }
+}
+

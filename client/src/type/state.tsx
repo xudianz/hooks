@@ -10,6 +10,7 @@ export interface MineState {
 
 // 当前用户信息
 export interface User {
+  id?: string,
   username: string,
   email: string,
   avatar: string

@@ -6,10 +6,19 @@ import helmet from 'helmet' // 用来过滤
 import 'dotenv/config' // 读取.env文件 写入process.env
 import path from 'path'
 import * as userController from './controllers/user'
-// import multer from 'multer' // 上传文件
+import multer from 'multer' // 上传文件
 
 import errorMiddleware from './middlewares/errorMiddleware'
 import HttpException from './exception/httpException'
+
+// 上传位置
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public', 'uploads'),
+  filename(_req: Request, file: Express.Multer.File, callback) {
+    callback(null, Date.now() + path.extname(file.originalname))
+  }
+})
+const upload = multer({ storage })
 
 const app: Express = express()
 app.use(cors())
@@ -29,6 +38,7 @@ app.get('/', (_req, res, _next) => {
 app.post('/user/register', userController.register)
 app.post('/user/login', userController.login)
 app.get('/user/validate', userController.validate)
+app.post('/user/uploadAvatar', upload.single('avatar'), userController.uploadAvatar)
 
 // 如果没有匹配到路由 创建一个自定义404错误对象 并传递给错误中间件
 app.use((_req: Request, _res: Response, next: NextFunction) => {

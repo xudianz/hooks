@@ -5,3 +5,8 @@ export interface RegisterData {
   data: User,
   message: string
 }
+
+export interface LoginData {
+  success: boolean,
+  data: string,
+}
