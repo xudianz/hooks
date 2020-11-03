@@ -7,6 +7,7 @@ import { message } from 'antd'
 
 export default {
   validate() {
+    // redux-promise
     return { type: actionTypes.VALIDATE, payload: validate() }
   },
   logout() {

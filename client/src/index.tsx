@@ -12,6 +12,7 @@ import Mine from './routes/Mine'
 import Login from './routes/Login'
 import Register from './routes/Register'
 import Profile from './routes/Profile'
+import Test from './routes/Test'
 import { ConnectedRouter } from 'connected-react-router'
 import history from '@/history'
 import Tabs from '@/components/Tabs'
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path="/profile" component={Profile} />
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register} />
+            <Route path="/test" component={Test} />
           </Switch>
         </main>
         <Tabs />

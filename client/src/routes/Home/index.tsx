@@ -1,19 +1,25 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useRef } from 'react'
 import HomeHeader from './components/HomeHeader'
+import HomeSlider from './components/Slider'
 import { RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { HomeState, CombinedState } from '@/type/state'
+import { HomeState, CombinedState } from '@/type'
 import mapDispatchToProps from '@/store/actions/home'
 import './index.less'
 
 type Props = PropsWithChildren<RouteComponentProps & ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps>
 
 function Home(props: Props) {
+  const ref = useRef<HTMLDivElement>(null)
   return (
     <>
       <HomeHeader
         currentCategory={props.currentCategory}
-        setCurrentCategory={props.setCurrentCategory}/>
+        setCurrentCategory={props.setCurrentCategory}
+      />
+      <div className="home-container" ref={ref}>
+        <HomeSlider sliders={props.sliders} getSliders={props.getSliders}/>
+      </div>
     </>
   )
 }

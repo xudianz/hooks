@@ -1,8 +1,5 @@
 import { RouterState } from 'connected-react-router'
-
-export interface HomeState {
-  currentCategory: string
-}
+import { HomeState } from './index'
 
 export interface MineState {
 

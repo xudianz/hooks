@@ -1,4 +1,5 @@
 export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY'
+export const SLIDERS = 'SLIDERS'
 
 export const VALIDATE = 'VALIDATE'
 
