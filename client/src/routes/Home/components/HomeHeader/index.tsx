@@ -9,7 +9,8 @@ const duration = 300
 
 const defaultStyle: CSSProperties = {
   transition: `all ${duration}ms ease-in-out`,
-  opacity: 0
+  opacity: 0,
+  display: 'none'
 }
 
 interface TransitionStyles {
@@ -21,11 +22,11 @@ interface TransitionStyles {
 }
 
 const transitionStyles: TransitionStyles = {
-  entering: { opacity: 1 },
-  entered:  { opacity: 1 },
-  exiting:  { opacity: 0 },
-  exited:  { opacity: 0 },
-  unmounted: { opacity: 0 }
+  entering: { opacity: 1, display: 'block' },
+  entered:  { opacity: 1, display: 'block' },
+  exiting:  { opacity: 0, display: 'none' },
+  exited:  { opacity: 0, display: 'none' },
+  unmounted: { opacity: 0, display: 'none' }
 }
 
 interface Props {

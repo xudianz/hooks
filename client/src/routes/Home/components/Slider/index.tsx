@@ -1,6 +1,7 @@
 import { Slider } from '@/type';
 import { Carousel } from 'antd';
-import React, { CSSProperties, PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
+import './index.less'
 
 type Props = PropsWithChildren<{
   sliders: Slider[],
@@ -10,21 +11,15 @@ type Props = PropsWithChildren<{
 function HomeSliders(props: Props) {
 
   useEffect(() => {
-    props.getSliders()
+    if (props.sliders.length === 0) {
+      props.getSliders()
+    }
   }, [])
-
-  const contentStyle: CSSProperties = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-  }
 
   return (
     <Carousel>
       {props.sliders.map((item: Slider) => (
-        <div key={item.id} style={contentStyle}>
+        <div className="slider-item" key={item.id}>
           <img src={item.url} />
         </div>
       ))}
