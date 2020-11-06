@@ -7,7 +7,7 @@ import 'dotenv/config' // 读取.env文件 写入process.env
 import path from 'path'
 import * as userController from './controllers/user'
 import * as sliderController from './controllers/slider'
-import { Slider } from './models'
+import { Slider, Lesson } from './models'
 import multer from 'multer' // 上传文件
 
 import errorMiddleware from './middlewares/errorMiddleware'
@@ -60,6 +60,7 @@ app.use(errorMiddleware);
   
   // 初始化slider
   await initSliderList()
+  await initLessonList()
 
   const PORT = process.env.PORT || 8001
   app.listen(PORT, () => {
@@ -77,5 +78,195 @@ async function initSliderList() {
       { url: '//image3.suning.cn/uimg/cms/img/160431529838820854.jpg' }
     ]
     await Slider.create(list)
+  }
+}
+
+async function initLessonList() {
+  // await Lesson.remove(() => {})
+  const lessons = await Lesson.find()
+  if (lessons.length === 0) {
+    const list = [
+      {
+        order: 1,
+        title: 'react技术栈1',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1020,
+        category: 'react'
+      },
+      {
+        order: 2,
+        title: 'react技术栈2',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1050,
+        category: 'react'
+      },
+      {
+        order: 3,
+        title: 'react技术栈3',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1030,
+        category: 'react'
+      },
+      {
+        order: 4,
+        title: 'react技术栈4',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1040,
+        category: 'react'
+      },
+      {
+        order: 5,
+        title: 'react技术栈5',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1090,
+        category: 'react'
+      },
+      {
+        order: 6,
+        title: 'vue技术栈6',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1020,
+        category: 'vue'
+      },
+      {
+        order: 7,
+        title: 'vue技术栈7',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1050,
+        category: 'vue'
+      },
+      {
+        order: 8,
+        title: 'vue技术栈8',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1030,
+        category: 'vue'
+      },
+      {
+        order: 9,
+        title: 'vue技术栈9',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1040,
+        category: 'vue'
+      },
+      {
+        order: 10,
+        title: 'vue技术栈10',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1090,
+        category: 'vue'
+      },
+      {
+        order: 11,
+        title: 'react技术栈11',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1020,
+        category: 'react'
+      },
+      {
+        order: 12,
+        title: 'react技术栈12',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1050,
+        category: 'react'
+      },
+      {
+        order: 13,
+        title: 'react技术栈13',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1030,
+        category: 'react'
+      },
+      {
+        order: 14,
+        title: 'react技术栈14',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1040,
+        category: 'react'
+      },
+      {
+        order: 15,
+        title: 'react技术栈15',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1090,
+        category: 'react'
+      },
+      {
+        order: 16,
+        title: 'vue技术栈16',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1020,
+        category: 'vue'
+      },
+      {
+        order: 17,
+        title: 'vue技术栈17',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1050,
+        category: 'vue'
+      },
+      {
+        order: 18,
+        title: 'vue技术栈18',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1030,
+        category: 'vue'
+      },
+      {
+        order: 19,
+        title: 'vue技术栈19',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1040,
+        category: 'vue'
+      },
+      {
+        order: 20,
+        title: 'vue技术栈20',
+        video: 'https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/13095d08345954365301432321/v.f20.mp4?dockingId=e8354436-4255-4c6d-a53b-1f2b009a42c8&storageSource=3',
+        poster: '//m.360buyimg.com/mobilecms/s750x750_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q80.dpg.webp',
+        url: '//img14.360buyimg.com/mobilecms/s372x372_jfs/t1/127852/35/7984/98067/5f194cb4E3199bf02/273edcc3cd3442fe.jpg!q70.dpg.webp',
+        price: 1090,
+        category: 'vue'
+      }
+    ]
+    await Lesson.create(list)
   }
 }
