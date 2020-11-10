@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useRef } from 'react'
 import HomeHeader from './components/HomeHeader'
 import HomeSlider from './components/Slider'
+import LessonList from './components/LessonList'
 import { RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { HomeState, CombinedState } from '@/type'
@@ -19,6 +20,7 @@ function Home(props: Props) {
       />
       <div className="home-container" ref={ref}>
         <HomeSlider sliders={props.sliders} getSliders={props.getSliders}/>
+        <LessonList />
       </div>
     </>
   )

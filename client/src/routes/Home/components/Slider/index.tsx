@@ -1,6 +1,6 @@
+import React, { PropsWithChildren, useEffect } from 'react';
 import { Slider } from '@/type';
 import { Carousel } from 'antd';
-import React, { PropsWithChildren, useEffect } from 'react';
 import './index.less'
 
 type Props = PropsWithChildren<{

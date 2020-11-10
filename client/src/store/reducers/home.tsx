@@ -4,7 +4,14 @@ import * as actionTypes from '@/store/action-types'
 
 const initialState: HomeState = {
   currentCategory: 'all',
-  sliders: []
+  sliders: [],
+  lessons: {
+    loading: false,
+    list: [],
+    hasMore: true,
+    limit: 10,
+    offset: 0
+  }
 }
 
 export default function (state: HomeState = initialState, action: AnyAction): HomeState {

@@ -7,6 +7,7 @@ import 'dotenv/config' // 读取.env文件 写入process.env
 import path from 'path'
 import * as userController from './controllers/user'
 import * as sliderController from './controllers/slider'
+import * as lessonController from './controllers/lesson'
 import { Slider, Lesson } from './models'
 import multer from 'multer' // 上传文件
 
@@ -38,6 +39,7 @@ app.get('/', (_req, res, _next) => {
 });
 
 app.get('/slider/list', sliderController.list)
+app.get('/lesson/list', lessonController.list)
 app.post('/user/register', userController.register)
 app.post('/user/login', userController.login)
 app.get('/user/validate', userController.validate)
