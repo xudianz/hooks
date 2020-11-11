@@ -18,6 +18,7 @@ export default {
         if (!loading && hasMore) {
           // dispatch()
           const result: LessonData = await getLessonList<LessonData>(currentCategory, offset, limit)
+          dispatch({ type: actionTypes.SET_LESSONS, payload: result.data })
         }
       })()
     }

@@ -20,7 +20,7 @@ function Home(props: Props) {
       />
       <div className="home-container" ref={ref}>
         <HomeSlider sliders={props.sliders} getSliders={props.getSliders}/>
-        <LessonList />
+        <LessonList getLessons={props.getLessons}/>
       </div>
     </>
   )

@@ -6,3 +6,5 @@ export const VALIDATE = 'VALIDATE'
 export const LOGOUT = 'LOGOUT'
 
 export const SET_AVATAR = 'SET_AVATAR'
+
+export const SET_LESSONS = 'SET_LESSONS'

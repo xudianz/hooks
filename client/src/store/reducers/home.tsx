@@ -9,7 +9,7 @@ const initialState: HomeState = {
     loading: false,
     list: [],
     hasMore: true,
-    limit: 10,
+    limit: 5,
     offset: 0
   }
 }
@@ -20,6 +20,23 @@ export default function (state: HomeState = initialState, action: AnyAction): Ho
       return { ...state, currentCategory: action.payload }
     case actionTypes.SLIDERS:
       return { ...state, sliders: action.payload.data }
+    case actionTypes.SET_LESSONS:
+
+      // state.lessons.loading = false
+      // state.lessons.list = [...state.lessons.list, ...action.payload.list]
+      // state.lessons.hasMore = action.payload.hasMore
+      // state.lessons.offset = state.lessons.offset + action.payload.list.length
+
+      return {
+        ...state,
+        lessons: {
+          ...state.lessons,
+          loading: false,
+          list: [...state.lessons.list, ...action.payload.list],
+          hasMore: action.payload.hasMore,
+          offset: state.lessons.offset + action.payload.list.length
+        }
+      }
     default:
       return state
   }
