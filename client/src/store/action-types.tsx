@@ -7,4 +7,7 @@ export const LOGOUT = 'LOGOUT'
 
 export const SET_AVATAR = 'SET_AVATAR'
 
+export const GET_LESSONS = 'GET_LESSONS'
 export const SET_LESSONS = 'SET_LESSONS'
+export const SET_LESSONS_LOADING = 'SET_LESSONS_LOADING'
+export const REFRESH_LESSONS = 'REFRESH_LESSONS'

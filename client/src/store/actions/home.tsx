@@ -16,7 +16,7 @@ export default {
       (async function() {
         let { currentCategory, lessons: { hasMore, limit, loading, offset } } = getState().home
         if (!loading && hasMore) {
-          // dispatch()
+          dispatch({ type: actionTypes.SET_LESSONS_LOADING, payload: true })
           const result: LessonData = await getLessonList<LessonData>(currentCategory, offset, limit)
           dispatch({ type: actionTypes.SET_LESSONS, payload: result.data })
         }
